@@ -2,25 +2,13 @@ package main
 
 import "net/http"
 
-type api struct {
-	addr string
-}
-
-func (a *api) getUserHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("GET /users"))
-}
-
-func (a *api) createUserHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("POST /users"))
-}
-
 func main() {
-	api := &api{addr: ":8080"}
+	api := &api{Addr: ":8000"}
 
 	mux := http.NewServeMux()
 
 	server := &http.Server{
-		Addr:    api.addr,
+		Addr:    api.Addr,
 		Handler: mux,
 	}
 
